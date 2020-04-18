@@ -1,10 +1,15 @@
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
+import {
+  CommandHandler,
+  EventPublisher,
+  ICommandHandler,
+} from '@nestjs/cqrs'
 import * as clc from 'cli-color'
 import { HeroRepository } from '../../repositories/hero.repository'
 import { KillDragonCommand } from '../impl/kill-dragon.command'
 
 @CommandHandler(KillDragonCommand)
-export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
+export class KillDragonHandler
+  implements ICommandHandler<KillDragonCommand> {
   constructor(
     private readonly repository: HeroRepository,
     private readonly publisher: EventPublisher,

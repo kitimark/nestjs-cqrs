@@ -1,4 +1,10 @@
-import { Controller, Body, Get, Param, Post } from '@nestjs/common'
+import {
+  Controller,
+  Body,
+  Get,
+  Param,
+  Post,
+} from '@nestjs/common'
 import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import { KillDragonCommand } from './commands/impl/kill-dragon.command'
 import { KillDragonDto } from './interface/kill-dragon-dto.interface'
@@ -13,8 +19,13 @@ export class HeroesController {
   ) {}
 
   @Post(':id/kill')
-  async killDragon(@Param('id') id: string, @Body() dto: KillDragonDto) {
-    return this.commandBus.execute(new KillDragonCommand(id, dto.dragonId))
+  async killDragon(
+    @Param('id') id: string,
+    @Body() dto: KillDragonDto,
+  ) {
+    return this.commandBus.execute(
+      new KillDragonCommand(id, dto.dragonId),
+    )
   }
 
   @Get()

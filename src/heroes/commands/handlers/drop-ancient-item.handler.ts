@@ -1,4 +1,8 @@
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
+import {
+  CommandHandler,
+  EventPublisher,
+  ICommandHandler,
+} from '@nestjs/cqrs'
 import * as clc from 'cli-color'
 import { HeroRepository } from '../../repositories/hero.repository'
 import { DropAncientItemCommand } from '../impl/drop-ancient-item.command'
@@ -12,7 +16,9 @@ export class DropAncientItemHandler
   ) {}
 
   async execute(command: DropAncientItemCommand) {
-    console.log(clc.yellowBright('Async DropAncientItemCommand...'))
+    console.log(
+      clc.yellowBright('Async DropAncientItemCommand...'),
+    )
 
     const { heroId, itemId } = command
     const hero = this.publisher.mergeObjectContext(

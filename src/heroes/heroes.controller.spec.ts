@@ -5,11 +5,15 @@ describe('Heroes Controller', () => {
   let controller: HeroesController
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [HeroesController],
-    }).compile()
+    const module: TestingModule = await Test.createTestingModule(
+      {
+        controllers: [HeroesController],
+      },
+    ).compile()
 
-    controller = module.get<HeroesController>(HeroesController)
+    controller = module.get<HeroesController>(
+      HeroesController,
+    )
   })
 
   it('should be defined', () => {
